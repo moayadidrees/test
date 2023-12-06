@@ -1,0 +1,72 @@
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <label for="Name">Name</label>
+  <input type="text" id="name" name="name" ngModel required />
+  <div *ngIf="f.submitted && f.controls['name'].errors">
+    <div *ngIf="f.controls['name'].errors['required']">
+      Name is required.
+    </div>
+  </div><br><br>
+
+  <label for="email">Email</label>
+  <input type="email" id="email" name="email" ngModel required email />
+  <div *ngIf="f.submitted && f.controls['email'].errors">
+    <div *ngIf="f.controls['email'].errors['required']">Email is required.</div>
+    <div *ngIf="f.controls['email'].errors['email']">Email is not valid.</div>
+  </div><br><br>
+
+<div>
+  <div>
+    <label for="Programming Languages">Programming Languages</label><br>
+    <input type="checkbox" name="Language" ngModel value="JavaScript" required> JavaScript <br>
+    <input type="checkbox" name="Language" ngModel value="Python" required> Python <br>
+    <input type="checkbox" name="Language" ngModel value=" Java" required>  Java <br>
+    <input type="checkbox" name="Language" ngModel value=" C++" required>  C++ <br>
+    <div *ngIf="f.submitted && f.controls['Language'].errors">
+      <div *ngIf="f.controls['Language'].errors['required']">
+       select at least one.
+      </div>
+    </div>
+  </div>
+
+
+</div><br><br>
+
+<div  >
+  <label for=" Experience Level"> Experience Level</label><br>
+  <input type="radio" name="Experience" value="Beginner" ngModel required> Beginner<br>
+<input type="radio" name="Experience" value="Intermediate" ngModel required> Intermediate<br>
+<input type="radio" name="Experience" value=" Advanced" ngModel required>  Advanced<br>
+<div *ngIf="f.submitted && f.controls['Experience'].errors">
+  <div *ngIf="f.controls['Experience'].errors['required']">
+    Select one of them
+  </div>
+</div>
+</div><br><br>
+
+<textarea name="descraption" id="descraption" cols="30" rows="10" minlength="10" placeholder="descraption" ngModel required></textarea>
+<br><br><br>
+  <button type="submit" [disabled]="f.invalid">Submit</button>
+</form>
+<br><br><br>
+<div *ngIf="f.submitted " >
+
+  "Congratulations {{f.value.name}}! Your programming
+skills are {{f.value.Experience}}. Keep up the great work!"</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
